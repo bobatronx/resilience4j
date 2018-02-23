@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
+import java.util.function.Consumer;
 
 import static io.github.resilience4j.circuitbreaker.CircuitBreaker.decorateRunnable;
 import static io.github.resilience4j.circuitbreaker.event.CircuitBreakerEvent.Type.*;
@@ -100,6 +101,11 @@ public class CircuitBreakerEventEmitterTest {
         @Override
         public void onTimeout(Runnable callback) {
             System.out.println("T");
+        }
+
+        @Override
+        public void onError(Consumer<Throwable> callback) {
+            System.out.println("E");
         }
 
         @Override

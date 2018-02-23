@@ -3,18 +3,18 @@
 ext {
     vavrVersion = '0.9.1'
     rxJavaVersion = '2.1.3'
-    reactorVersion = '3.0.7.RELEASE'
+    reactorVersion = '3.1.3.RELEASE'
     junitVersion = '4.12'
     slf4jVersion = '1.7.24'
     assertjVersion = '3.6.2'
     logbackVersion = '0.9.26'
-    mockitoVersion = '1.10.19'
-    powermockVersion = '1.6.6'
+    mockitoVersion = '2.15.0'
+    powermockVersion = '1.7.3'
     jcacheVersion = '1.0.0'
     awaitilityVersion = '1.7.0'
     metricsVersion = '3.1.2'
     vertxVersion = '3.4.1'
-    springBootVersion = '1.4.3.RELEASE'
+    springBootVersion = '2.0.0.RC2'
     ratpackVersion = '1.4.6'
     spockVersion = '1.1-groovy-2.4-rc-4'
     retrofitVersion = '2.1.0'
@@ -32,8 +32,8 @@ ext {
             assertj: "org.assertj:assertj-core:${assertjVersion}",
             logback: "ch.qos.logback:logback-classic:${logbackVersion}",
             mockito: "org.mockito:mockito-core:${mockitoVersion}",
-            powermock: "org.powermock:powermock:${powermockVersion}",
-            powermock_api_mockito: "org.powermock:powermock-api-mockito:${powermockVersion}",
+//            powermock: "org.powermock:powermock:${powermockVersion}",
+            powermock_api_mockito: "org.powermock:powermock-api-mockito2:${powermockVersion}",
             powermock_module_junit4: "org.powermock:powermock-module-junit4:${powermockVersion}",
             awaitility: "com.jayway.awaitility:awaitility:${awaitilityVersion}",
 

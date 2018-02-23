@@ -15,34 +15,34 @@
  */
 package io.github.resilience4j.circuitbreaker.monitoring.endpoint;
 
-import org.springframework.boot.actuate.endpoint.AbstractEndpoint;
-import org.springframework.boot.actuate.endpoint.Endpoint;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.http.ResponseEntity;
-
-import java.util.List;
-
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import java.util.List;
 
 
 /**
  * {@link Endpoint} to expose CircuitBreaker events.
  */
 @ConfigurationProperties(prefix = "endpoints.circuitbreaker")
-public class CircuitBreakerEndpoint extends AbstractEndpoint {
+@Endpoint(id = "circuitbreaker")
+public class CircuitBreakerEndpoint {
 
     private final CircuitBreakerRegistry circuitBreakerRegistry;
 
     public CircuitBreakerEndpoint(CircuitBreakerRegistry circuitBreakerRegistry) {
-        super("circuitbreaker");
         this.circuitBreakerRegistry = circuitBreakerRegistry;
     }
 
-    @Override
-    public ResponseEntity<CircuitBreakerEndpointResponse> invoke() {
-        List<String> circuitBreakers = circuitBreakerRegistry.getAllCircuitBreakers()
-                .map(CircuitBreaker::getName).sorted().toJavaList();
-        return ResponseEntity.ok(new CircuitBreakerEndpointResponse(circuitBreakers));
+    @ReadOperation
+    public List<String> getCircuitBreakerInfo() {
+        return circuitBreakerRegistry
+                .getAllCircuitBreakers()
+                .map(CircuitBreaker::getName)
+                .sorted()
+                .toJavaList();
     }
 }

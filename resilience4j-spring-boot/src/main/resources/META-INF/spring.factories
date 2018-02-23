@@ -5,3 +5,6 @@ io.github.resilience4j.circuitbreaker.autoconfigure.CircuitBreakerPrometheusAuto
 io.github.resilience4j.ratelimiter.autoconfigure.RateLimiterAutoConfiguration,\
 io.github.resilience4j.ratelimiter.autoconfigure.RateLimiterMetricsAutoConfiguration,\
 io.github.resilience4j.ratelimiter.autoconfigure.RateLimiterPrometheusAutoConfiguration
+
+org.springframework.boot.actuate.autoconfigure.web.ManagementContextConfiguration=\
+io.github.resilience4j.config.ManagementContextConfig

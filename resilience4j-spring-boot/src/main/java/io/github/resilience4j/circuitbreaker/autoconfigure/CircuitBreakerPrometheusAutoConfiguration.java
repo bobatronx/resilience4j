@@ -16,7 +16,6 @@
 package io.github.resilience4j.circuitbreaker.autoconfigure;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.prometheus.CircuitBreakerExports;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -26,14 +25,15 @@ import org.springframework.context.annotation.Configuration;
  * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration
  * Auto-configuration} for resilience4j-metrics.
  */
-@Configuration
-@AutoConfigureAfter(value = CircuitBreakerAutoConfiguration.class)
-@ConditionalOnClass(CircuitBreakerExports.class)
+//@Configuration
+//@AutoConfigureAfter(value = CircuitBreakerAutoConfiguration.class)
+//@ConditionalOnClass(CircuitBreakerExports.class)
+//TODO - Implement when micrometer is ready
 public class CircuitBreakerPrometheusAutoConfiguration {
-    @Bean
-    public CircuitBreakerExports circuitBreakerPrometheusCollector(CircuitBreakerRegistry circuitBreakerRegistry){
-        CircuitBreakerExports collector = CircuitBreakerExports.ofCircuitBreakerRegistry(circuitBreakerRegistry);
-        collector.register();
-        return collector;
-    }
+//    @Bean
+//    public CircuitBreakerExports circuitBreakerPrometheusCollector(CircuitBreakerRegistry circuitBreakerRegistry){
+//        CircuitBreakerExports collector = CircuitBreakerExports.ofCircuitBreakerRegistry(circuitBreakerRegistry);
+//        collector.register();
+//        return collector;
+//    }
 }

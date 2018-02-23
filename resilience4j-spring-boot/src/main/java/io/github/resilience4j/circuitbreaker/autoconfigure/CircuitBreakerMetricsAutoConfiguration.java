@@ -15,33 +15,36 @@
  */
 package io.github.resilience4j.circuitbreaker.autoconfigure;
 
-import com.codahale.metrics.MetricRegistry;
-
-import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
-import org.springframework.boot.actuate.autoconfigure.MetricsDropwizardAutoConfiguration;
-import org.springframework.boot.actuate.metrics.repository.MetricRepository;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.composite.CompositeMeterRegistry;
+import io.micrometer.core.instrument.dropwizard.DropwizardConfig;
+import io.micrometer.core.instrument.dropwizard.DropwizardMeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.metrics.CircuitBreakerMetrics;
 
 /**
  * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration
  * Auto-configuration} for resilience4j-metrics.
  */
-@Configuration
-@ConditionalOnClass(MetricRepository.class)
-@AutoConfigureAfter(value = {CircuitBreakerAutoConfiguration.class, MetricsDropwizardAutoConfiguration.class})
-@AutoConfigureBefore(MetricRepositoryAutoConfiguration.class)
+//@Configuration
+//@ConditionalOnClass(MeterRegistry.class)
+//@AutoConfigureAfter(value = {CircuitBreakerAutoConfiguration.class, MetricsAutoConfiguration.class})
+//TODO - Implement when micrometer is merged
 public class CircuitBreakerMetricsAutoConfiguration {
-    @Bean
-    public CircuitBreakerMetrics registerCircuitBreakerMetrics(CircuitBreakerRegistry circuitBreakerRegistry, MetricRegistry metricRegistry){
-        CircuitBreakerMetrics circuitBreakerMetrics = CircuitBreakerMetrics.ofCircuitBreakerRegistry(circuitBreakerRegistry);
-        metricRegistry.registerAll(circuitBreakerMetrics);
-        return circuitBreakerMetrics;
-    }
+//    @Bean
+//    public CircuitBreakerMetrics registerCircuitBreakerMetrics(CircuitBreakerRegistry circuitBreakerRegistry, MetricRegistry metricRegistry) {
+//        CircuitBreakerMetrics circuitBreakerMetrics = CircuitBreakerMetrics.ofCircuitBreakerRegistry(circuitBreakerRegistry);
+//        metricRegistry.registerAll(circuitBreakerMetrics);
+//        return circuitBreakerMetrics;
+//    }
+//
+//    @Bean
+//    DropwizardMeterRegistry dropwizardMeterRegistry(MetricRegistry metricRegistry) {
+//        return new DropwizardMeterRegistry(null, metricRegistry, null, null);
+//    }
 }

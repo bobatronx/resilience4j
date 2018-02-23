@@ -38,6 +38,9 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven {
+            url "https://repo.spring.io/libs-milestone"
+        }
     }
 }
 artifactoryPublish.skip=true // apply to all projects except the root
@@ -63,7 +66,7 @@ configure(project.coreProjects) {
         testCompile ( libraries.assertj)
         testCompile ( libraries.logback)
         testCompile ( libraries.mockito)
-        testCompile ( libraries.powermock)
+//        testCompile ( libraries.powermock)
         testCompile ( libraries.powermock_api_mockito)
         testCompile ( libraries.powermock_module_junit4)
         testCompile ( libraries.awaitility)
